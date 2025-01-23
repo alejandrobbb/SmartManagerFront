@@ -10,4 +10,4 @@ El sistema puede complementarse con otros módulos, como la detección y reconoc
 En esta versión pública, queda disponible lo siguiente:
 
 El script que expone las cámaras, a los modulos de procesamiento de Machine Learning para la detección de personas (y otros procesos). <br>Este script se comunica a través de WebSockets con un hub implementado en C#. <br>Una parte del cliente donde se pueden visualizar las alertas, además del consumo de los sockets con información y frames previamente procesados por los modelos de Machine Learning obtenidos por medio del HUB.<br><br><h3>Proyecto desarrollado para Virtual Technologies por @Alejandrobbb via Github.</h3>
-![Uploading nether3.png…]()
+![nether3](https://github.com/user-attachments/assets/272960e5-4c7d-4b12-9edc-74f528da32e0)
