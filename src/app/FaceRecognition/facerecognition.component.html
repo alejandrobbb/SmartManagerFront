@@ -1,0 +1,155 @@
+<div class="main">
+  <div class="contMain">
+    <div class="Cont_lateral">
+      <div class="btn_01">Estadisticas</div>
+      <div class="btn_01">Roles</div>
+      <div class="btn_02">Salir</div>
+    </div>
+    <div class="ContTitP">Virtual Canton Norte Analytics</div>
+  </div>
+
+
+  <div class="ContPrincipal">
+    <div class="submainFrame">
+      <div *ngIf="recognizedName" class="name-display">
+        <!--por el momento el nombre que obtengo lo muestra aca, se debe mostrar iterado mas abajo-->
+        <h3>Rostro Reconocido: {{ recognizedName }}</h3>
+      </div>
+      <div class="ContIzq">
+        
+        <div class="ContVideo">
+          <div *ngIf="!imageLoaded">Cargando transmisión...</div>
+        
+          <!-- Imagen actual (visible) -->
+          <img *ngIf="!isTransitioning" [src]="imgSrc" alt="Imagen generada" class="fade-in">
+          
+          <!-- Imagen de transición (superpuesta mientras la nueva carga) -->
+          <img *ngIf="isTransitioning" [src]="nextImgSrc" alt="Imagen generada" class="fade-in">
+        </div>
+        
+        
+      
+
+        <div class="Separador"></div>
+
+        <h3>Persona Seleccionada</h3>
+        <!--cuando seleccione una persona de la lista de abajo se mostrara aca-->
+        <div class="faceRecognize">
+          <h3>Persona Seleccionada</h3>
+          <div *ngIf="selectedPerson" class="NombrePersona">
+            {{ selectedPerson }}
+          </div>
+          <div *ngIf="!selectedPerson">
+            <p>Selecciona una persona de la lista.</p>
+          </div>
+        </div>
+
+        <h3>Historial temporal personas encontradas</h3>
+        <div class="contPeopleRecognize">
+          <h4>Nombre de la sala: {{ roomName }}</h4>
+          <h4>Número de personas en rango de visión: {{ personCount }}</h4>
+          <div class="contPersons">
+            <div *ngFor="let image of imageList" class="cuPersona">
+     
+              <img [src]="'data:image/jpeg;base64,' + image" (click)="selectPerson(image)" class="ImgCuPersona" />
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="submainCont">
+      <div class="PrimerPanel">
+        <div class="ContPBtns">
+
+          <div class="PP_BTN">
+            <div class="IMG_Location"></div>
+            Zona {{ selectedArea }}
+          </div>
+          <div class="PP_BTN">
+            <div class="IMG_Cam"></div>
+           Camara {{ selectedCam }}
+          </div>
+        </div>
+        <div class="ContPBtns">
+     
+      
+            <select id="dropdownAreas" class="dropDowns" [(ngModel)]="selectedArea">
+              <option *ngFor="let area of optionsAreas" [value]="area">{{ area }}</option>
+            </select>
+
+            <select id="dropdownCams" class="dropDowns" [(ngModel)]="selectedCam">
+              <option *ngFor="let cam of optionsCams" [value]="cam">{{ cam }}</option>
+              
+            </select>
+       
+        </div>
+        <div class="Separador"></div>
+        <div class="ContOptions">
+          <div class="btnOption_01">
+            <div class="IMG_Option01"></div>
+              Buscar civil
+          </div>
+          <div class="btnOption_01">
+            <div class="IMG_Option02"></div>
+              Agendamientos vencidos
+          </div>
+
+          <div class="btnOption_01">
+            <div class="IMG_Option03"></div>
+              Control de zona
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="ContSegundoP">
+        <div style="">
+          <div class="ContWarns">
+            <div class="btnWarn_01">
+              <div class="IMG_Warn01"></div>
+                Critico
+            </div>
+            <div class="btnWarn_02">
+              <div class="IMG_Warn02"></div>
+                Importante
+            </div>
+            <div class="btnWarn_03">
+              <div class="IMG_Warn03"></div>
+              Medio
+            </div>
+          </div>
+          <div class="Separador"></div>
+          <div class="contToScroll">
+            <div class="ScrollWarns">
+              <div class="btnWarnPop" *ngFor="let notification of notifications">
+                <div class="IMG_WarnPop"></div>
+                <h4>Nombre de sala: {{ notification.roomName }}<br>Cantidad de personas: {{ notification.personCount }}</h4>
+                <h5 *ngIf="notification.personCount > 0">Alerta standard</h5>
+                <h5 *ngIf="notification.personCount === 0">Sin personas detectadas</h5>
+            </div>
+            
+
+            </div>
+          </div>  
+        </div>
+      </div>
+
+      <div class="faceRecognize" *ngFor="let name of detectedNames" (click)="selectPerson(name)">
+      <div class="NombrePersona">{{ name }}</div>
+      <div class="ContInfoPersona">
+        <div class="imgPersona"></div>
+        <div class="ContToInfo">
+          <div class="info">Cuenta total:</div>
+          <div class="info">Última compra:</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
+
+</div>
+
+<router-outlet />
+  
