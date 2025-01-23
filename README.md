@@ -1,27 +1,12 @@
-# TestSignalAngular
+<h2>SmartManager</h2>
+<h5>FrontAngular</h5>
+Para iniciar este proyecto en correcto funcionamiento, es importante tener en ejecución todas las partes del proyecto en su conjunto, y que la comunicaion entre ellas este parametrizada correctamente. Quedan publicos tambien en otros repositorios con la referencia "SMART MANAGER" las demas partes del proyecto: scripts de machine learning en Python, el canal de servicios API WebSockets en .NET C#, y el cliente Frontend desarrollado en Angular TS.<br>Son tres partes a grandes rasgos separados por independencia de responsabilidades.<br><br>
+Esta base está parametrizada para funcionar también con otros scripts modulares de machine learning desde el backend que no estan en esta version, permitiendo implementar funcionalidades como detección facial, control de zonas, sistema de alarmas y notificaciones, control de personal y actividades.
+<h4>Esta es una fracción del proyecto original, presentada como un template público en su versión "LITE".</h4><br><h3>Esta versión Lite es un sistema de Machine Learning para la detección de personas y gestión de eventos.</h3>
+Funciona con la mayoria de cámaras RTSP, procesa el video y lo separa por frames estos los envia a un stack de algoritmos y modelos de Inteligencia Artificial que pre-procesan la imagen N numero de veces (pasandolo por los diferentes modulos habilitados de los que conste la version) estos diferentes modulos hacen mas robustas las capas de pre-procesamiento alimentandose entre ellas, dependiendo de la versión, van estructurando una secuencia en orden de procesamiento formando un pipeline, a medida que se liberan, se comunican a otros procesos y finalmente se conectan al hub para usarlo como puente directo hacia el cliente expuesto en una web.<br><br>El proyecto fue enfocado inicialmente para la detección y control de personal uniformado y control de areas, por ejemplo zonas y personal militar.<br><br>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+El sistema puede complementarse con otros módulos, como la detección y reconocimiento facial, la delimitación de áreas para civiles y personal autorizado. Estos módulos ya han sido desarrollados, pero no forman parte de la versión pública, ya que fueron implementados en el proyecto privado principal.
 
-## Development server
+En esta versión pública, queda disponible lo siguiente:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+El script que expone las cámaras, a los modulos de procesamiento de Machine Learning para la detección de personas (y otros procesos). <br>Este script se comunica a través de WebSockets con un hub implementado en C#. <br>Una parte del cliente donde se pueden visualizar las alertas, además del consumo de los sockets con información y frames previamente procesados por los modelos de Machine Learning obtenidos por medio del HUB.<br><br><h3>Proyecto desarrollado para Virtual Technologies por @Alejandrobbb via Github.</h3>
